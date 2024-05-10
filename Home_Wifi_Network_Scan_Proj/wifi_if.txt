@@ -1,0 +1,11 @@
+54,59d53
+< 	inet6 fe80::1828:9606:761f:cb39%en0 prefixlen 64 secured scopeid 0xb 
+< 	inet 192.168.1.5 netmask 0xffffff00 broadcast 192.168.1.255
+< 	inet6 fd00:f405:95a8:870:1427:5e1:477b:461b prefixlen 64 autoconf secured 
+< 	inet6 2603:8001:8d00:80:cb6:e736:8ec7:4970 prefixlen 64 autoconf secured 
+< 	inet6 2603:8001:8d00:80:f473:fd9d:868d:53e4 prefixlen 64 autoconf temporary 
+< 	inet6 2603:8001:8d00:80::1e5e prefixlen 64 dynamic 
+62c56
+< 	status: active
+---
+> 	status: inactive

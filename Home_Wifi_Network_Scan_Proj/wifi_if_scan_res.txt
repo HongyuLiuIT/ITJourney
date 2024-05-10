@@ -1,0 +1,23 @@
+>nmap 192.168.1.0/24 -sn -T5
+Starting Nmap 7.95 ( https://nmap.org ) at 2024-05-09 19:44 PDT
+Stats: 0:00:03 elapsed; 0 hosts completed (0 up), 256 undergoing Ping Scan
+Ping Scan Timing: About 3.91% done; ETC: 19:45 (0:01:14 remaining)
+Nmap scan report for 192.168.1.1
+Host is up (1.0s latency).
+Nmap scan report for 192.168.1.5 // My Mac Device
+Host is up (0.00090s latency).
+Nmap scan report for 192.168.1.7
+Host is up (0.048s latency).
+Nmap scan report for 192.168.1.105 // A Linux Device
+Host is up (0.21s latency).
+Nmap scan report for 192.168.1.180 // Another Mac Device
+Host is up (0.0082s latency).
+Nmap scan report for 192.168.1.202 // All ports ignore scanning (default timing), what could it be?
+Host is up (0.14s latency).
+Nmap scan report for 192.168.1.212 // Nmap guesses that it could be 2N Helios IP VoIP doorbell (96%), Advanced Illumination DCS-100E lighting controller (96%), AudioControl D3400 network amplifier (96%), British Gas GS-Z3 data logger (96%), Chamberlain myQ garage door opener (96%), Daikin DKN Cloud Wi-Fi Adaptor (96%), Daysequerra M4.2SI radio (96%), Denver Electronics AC-5000W MK2 camera (96%), Eve Cam (lwIP 2.1.0 - 2.2.0) (96%), Fatek FBs-CBEH PLC Ethernet communication board (96%)
+Host is up (0.081s latency).
+Nmap scan report for 192.168.1.213 // Sysinfo same as .212
+Host is up (0.073s latency).
+Nmap scan report for 192.168.1.233
+Host is up (0.00038s latency).
+
