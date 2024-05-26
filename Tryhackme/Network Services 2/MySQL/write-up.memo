@@ -1,0 +1,10 @@
+Target Machine IPv4 address: 10.10.33.118
+--------------------------------------------------
+PORT     STATE SERVICE
+22/tcp   open  ssh
+3306/tcp open  mysql
+--------------------------------------------------
+
+# Try connecting to the MySQL server using given credentials
+mysql -h 10.10.33.118 -u root -p
+
