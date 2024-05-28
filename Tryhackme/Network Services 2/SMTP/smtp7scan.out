@@ -1,0 +1,23 @@
+# Nmap 7.94SVN scan initiated Thu May 23 18:59:06 2024 as: nmap -sT -p- -A -vv -oN smtp7scan.out 10.10.214.216
+Increasing send delay for 10.10.214.216 from 20 to 40 due to 11 out of 36 dropped probes since last increase.
+Nmap scan report for 10.10.214.216
+Host is up, received conn-refused (0.16s latency).
+Scanned at 2024-05-23 18:59:07 PDT for 6280s
+Not shown: 65533 closed tcp ports (conn-refused)
+PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 62:a7:03:13:39:08:5a:07:80:1a:e5:27:ee:9b:22:5d (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLzGW2N+TMgb36oZ5nXTWZx9xxdat6dZjm0MWKiczo7KS/9C/YA5LKMhbsEwU7lKePA8wrK+8GGOMO0LI7EHwxhmBxbJfXZaiuKjATTFT0A5S8qHC/dArC2JtLarYuEC9kInteBvoboE/Oo+27W+b/1e9SjeVp8KtMFyJa73SGR875DvD3mZFeNGv1IOLUrPm7GJVLIJCFlZqFdSBrn0pPkaNN2h0z8XvIvZwTvSeIANpTi1BWt5NpMuSo5qbYxCgBmoysmQyp5SHQceqKUFYHEiYXZIBMs2nQww5plyUCI4b09vaF0rAEqaS++scnYGc3ldVVq0Ffc0v5VbwvOstN
+|   256 89:d0:40:92:15:09:39:70:17:6e:c5:de:5b:59:ee:cb (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBB4NrsBAERAQTG53D50OgCR5yvxTY6iUr0dpKnaAQCvHgux0GzPoxcBT+mH4+3E3GrFJqulw/hI2TjjEUsRo/3E=
+|   256 56:7c:d0:c4:95:2b:77:dd:53:d6:e6:73:99:24:f6:86 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFig3TbPjHOAaFOKJkPU+5++IeUlAsIWaxq3QM5tIacZ
+25/tcp open  smtp    syn-ack Postfix smtpd
+|_smtp-commands: polosmtp.home, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8
+|_ssl-date: TLS randomness does not represent time
+Service Info: Host:  polosmtp.home; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu May 23 20:43:47 2024 -- 1 IP address (1 host up) scanned in 6280.56 seconds
