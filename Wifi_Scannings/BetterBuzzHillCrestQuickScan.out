@@ -1,0 +1,8 @@
+# Nmap 7.94SVN scan initiated Mon Jun 10 18:06:10 2024 as: nmap -sS -F -oN BetterBuzzHillCrestQuickScan.out -T4 192.168.10.1
+Nmap scan report for 192.168.10.1
+Host is up (0.0012s latency).
+Not shown: 99 filtered tcp ports (no-response)
+PORT   STATE SERVICE
+53/tcp open  domain
+
+# Nmap done at Mon Jun 10 18:06:12 2024 -- 1 IP address (1 host up) scanned in 2.05 seconds

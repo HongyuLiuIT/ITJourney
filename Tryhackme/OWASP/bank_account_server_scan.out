@@ -1,0 +1,12 @@
+# Nmap 7.94SVN scan initiated Mon Jun 10 16:30:53 2024 as: nmap -sT -F -oN bank_account_server_scan.out 10.10.96.139
+Nmap scan report for 10.10.96.139
+Host is up (0.20s latency).
+Not shown: 95 closed tcp ports (conn-refused)
+PORT     STATE    SERVICE
+22/tcp   open     ssh
+80/tcp   open     http
+81/tcp   open     hosts2-ns
+1110/tcp filtered nfsd-status
+6646/tcp filtered unknown
+
+# Nmap done at Mon Jun 10 16:30:56 2024 -- 1 IP address (1 host up) scanned in 2.66 seconds
