@@ -5,6 +5,8 @@ mv ~/Documents/rickroll_4k.jpg ./mountains.jpg
 # Hosts aliases
 10.10.121.202    overwrite.uploadvulns.thm shell.uploadvulns.thm java.uploadvulns.thm annex.uploadvulns.thm magic.uploadvulns.thm jewel.uploadvulns.thm demo.uploadvulns.thm
 
+# To revert, use
+sudo sed -i '$d' /etc/hosts
 
 ---------------------------------------------------------------------------------
 └─$ gobuster dir -u http://shell.uploadvulns.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
@@ -32,3 +34,51 @@ Starting gobuster in directory enumeration mode
 # Listen on the desired port (1234) and ppload the reverse shell (/php-reverse-shell.php)
 
 nc -lvnp 1234
+
+
+
+===============================================================
+
+# To bypass SERVER side filtering w/ certain type of extensions
+# First determine what kind of extensions are allowed
+# Next exploit the potential flaws in the server side code to upload the files with extensions that can pass the server side filtering and still being desirable to us. E.g. name a file's extensions with ".php5" as oppose to ".php"
+
+
+===============================================================
+
+# The SERVER side filtering may also depend on MAGIC NUMBERS, aka file signatures (https://en.wikipedia.org/wiki/List_of_file_signatures). In such a case, we would have to camouflage our file with the MAGIC NUMBER of a type of file that the server is willing to accept. E.g. adding (0xFF D8 FF E0) to the start of the file of a php file. 
+
+# Check the _gif.php file to see the change.
+
+===============================================================
+===============================================================
+
+# Challenge write-up:
+
+# 1. Browse the target website "http://jewel.uploadvulns.thm/" and find a file upload anchor point. Find that the website is using Node.js, so we prepare the corresponding shell script.
+# 2. Check the source code and find the CLIENT side filters.
+# 3. The filters whitelists ".jpeg" and ".jpg" file types. It also whitelists the magic number 	ÿØÿ (0x FFD8FF). The size limit of the file is 50 KB, which is greater than the size of our reverse shell script.
+# 4. Use Burp to intercept the webpage and remove the client side filters.
+# 5. Enumerate the server side filter and find that it is a MIME based filter. Upload the shell script using Burp modifying the file type. The server returns a "success" message.
+# 6. Run gobuster to enumerate the website: (This step should be run first to save time; the results will be used to cross-validate with future enumerations to locate the newly uploaded file.)
+└─$ gobuster dir -u http://jewel.uploadvulns.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+===============================================================
+#/content              (Status: 301) [Size: 181] [--> /content/]
+#/modules              (Status: 301) [Size: 181] [--> /modules/]
+#/admin                (Status: 200) [Size: 1238]
+#/assets               (Status: 301) [Size: 179] [--> /assets/]
+#/Content              (Status: 301) [Size: 181] [--> /Content/]
+#/Assets               (Status: 301) [Size: 179] [--> /Assets/]
+#/Modules              (Status: 301) [Size: 181] [--> /Modules/]
+#/Admin                (Status: 200) [Size: 1238]
+===============================================================
+
+# 7. Through enumerating the webpage, we observe that the /content folder may be useful since it stores the background image with a three-letter name.
+
+# 8. Enumerate /content with the provided word list.
+
+# 9. Open up a local listener and navigate to the /admin page of the target website to launch the shell script.
+
+└─$ gobuster dir -u http://jewel.uploadvulns.thm/content -w UploadVulnsWordlist_1593564107766.txt -x php
+└─$ gobuster dir -u http://jewel.uploadvulns.thm/assets -w UploadVulnsWordlist_1593564107766.txt -x php
+└─$ gobuster dir -u http://jewel.uploadvulns.thm/modules -w UploadVulnsWordlist_1593564107766.txt -x php
