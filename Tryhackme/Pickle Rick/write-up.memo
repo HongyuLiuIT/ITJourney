@@ -1,0 +1,27 @@
+10.10.55.121
+=================================================================================
+
+# 1. Enumerate the website and find the following:
+# 1.1. Username: R1ckRul3s
+# 2. Run gobuster on the target: gobuster dir -u http://10.10.55.121 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 250
+# 2.1. Finds /assets folder
+# 2.2. Try curl the robot.txt file, we get: 
+└─$ curl "http://10.10.55.121/robots.txt"
+Wubbalubbadubdub, possible password
+
+# 3. Run Nmap on the target: nmap -sT 10.10.55.121 -F -oN "server_quick_scan.out"
+# 3.1. Discovered: PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+# 4. Try the possible username/passwd combination on SSH, and fails.
+# 5. Go back to the /assets page to get clue for a login page. Discover portal.jpg
+# 6. Finds a login page under /portal.php and LOG IN with the usrn/pswd comb.
+# 7. Find the first ingredient:
+└─$ curl "http://10.10.55.121/Sup3rS3cretPickl3Ingred.txt"
+mr. meeseek hair
+
+# 8. Run sudo -l and find that we can run commands in sudo mode without password.
+
+# 9. Find the ingredients under sudo ls ../../../*
+

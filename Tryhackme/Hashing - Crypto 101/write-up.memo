@@ -1,0 +1,4 @@
+# For hashcat
+# -O flag is for "optimization"
+# -D 1 forces the tool to use CPU memory instead of just graphics memory
+# automated hash recognition tools such as https://pypi.org/project/hashID/ exist, but they are unreliable for many formats.
